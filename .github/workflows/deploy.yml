@@ -24,12 +24,13 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Deux jobs séparés (modèle officiel GitHub) : le déploiement ne démarre qu'une fois
+# l'archive du site entièrement enregistrée. Dans un seul job, le déploiement la
+# cherchait parfois trop tôt ("No artifacts named github-pages were found").
+# En cas d'échec du déploiement seul, "Re-run failed jobs" ne relance que celui-ci.
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     defaults:
       run:
         # Shell de connexion : l'environnement conda est activé à chaque étape.
@@ -57,6 +58,13 @@ jobs:
         with:
           path: ./_build/html
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
