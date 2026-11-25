@@ -1,6 +1,6 @@
 # Méthodes numeriques avancées et calcul haute performance pour la simulation de phénomènes complexes
 
-**Année 2025-2026**
+**Année 2026-2027**
 
 ![image](./mna.png)
 
