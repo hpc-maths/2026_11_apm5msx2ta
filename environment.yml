@@ -1,0 +1,13 @@
+name: apm5msx2ta
+channels:
+  - conda-forge
+dependencies:
+  # jupyter-book installe aussi nodejs, ipykernel et jupyter_server
+  - jupyter-book=2.1.7
+  - numpy
+  - scipy
+  - mpmath
+  - sympy
+  - matplotlib
+  - plotly
+  - h5py

@@ -1,0 +1,28 @@
+# Configuration Jupyter Book 2 (MyST)
+# Voir https://jupyterbook.org et https://mystmd.org/guide/frontmatter
+version: 1
+
+project:
+  title: APM 5MSX2 TA Méthodes numériques avancées
+  authors:
+    - name: Marc Massot
+  copyright: "2026"
+  # Les fichiers hors de la table des matières ne sont pas publiés
+  exclude:
+    - _build/**
+    - "**/.ipynb_checkpoints/**"
+  toc:
+    - file: content/home.md
+    - file: content/mode_emploi.md
+    - title: Cours
+      children:
+        - file: content/cours01/cours01.md
+          children:
+            - file: content/cours01/float.ipynb
+
+site:
+  # Version du thème figée : "book-theme" prend toujours la dernière version, qui peut
+  # exiger un jupyter-book plus récent que celui fixé dans environment.yml.
+  template: https://github.com/jupyter-book/myst-theme/releases/download/myst-to-react%401.4.1/book-theme.zip
+  options:
+    logo: logo_apm_5msx2_ta.png
